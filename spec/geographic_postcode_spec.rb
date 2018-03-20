@@ -271,4 +271,41 @@ describe UKPostcode::GeographicPostcode do
       expect(described_class.new("W", "1A").country).to eq(:england)
     end
   end
+
+  describe "#specificity" do
+
+    it "is area for area only" do
+      expect(described_class.new("W").specificity).to eq(:area)
+    end
+
+    it "is outcode for outcode only" do
+      expect(described_class.new("W", "1A").specificity).to eq(:outcode)
+    end
+
+    it "is outcode_and_sector for outcode with sector only" do
+      expect(described_class.new("W", "1A", "1").specificity).to eq(:outcode_and_sector)
+    end
+
+    it "is full for full postcode only" do
+      expect(described_class.new("W", "1A", "1", "AA").specificity).to eq(:full)
+    end
+  end
+
+  describe "full" do
+    subject { described_class.new("W", "1A", "1", "AA") }
+
+    it "aliases to_s" do
+      expect(subject.full).to eq(subject.to_s)
+    end
+  end
+
+  describe "outcode_and_sector" do
+    it "is generated from outcode and sector" do
+      expect(described_class.new("W", "1A", "1", "AA").outcode_and_sector).to eq("W1A 1")
+    end
+
+    it "is nil if missing sector" do
+      expect(described_class.new("W", "1A").outcode_and_sector).to be_nil
+    end
+  end
 end

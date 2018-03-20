@@ -42,6 +42,8 @@ module UKPostcode
       "GIR 0AA"
     end
 
+    alias_method :full, :to_s
+
     # GIR 0AA is always valid.
     #
     def valid?
@@ -58,6 +60,10 @@ module UKPostcode
     #
     def country
       :england
+    end
+
+    def specificity
+      :full
     end
   end
 end

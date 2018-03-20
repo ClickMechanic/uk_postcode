@@ -16,6 +16,10 @@ module UKPostcode
     def unit;     nil; end
     def incode;   nil; end
     def outcode;  nil; end
+    def outcode_and_sector; nil; end
+    def full; nil; end
+
+    def specificity; nil; end
 
     def to_s
       raise NotImplemented

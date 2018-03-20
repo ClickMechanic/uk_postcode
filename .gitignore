@@ -2,3 +2,8 @@
 Gemfile.lock
 /data/
 /spec/data/
+
+# Ignore any .idea project files
+/.idea
+.idea/workspace.xml
+*.iml

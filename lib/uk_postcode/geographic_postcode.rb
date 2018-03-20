@@ -49,6 +49,13 @@ module UKPostcode
       [area, district].join('')
     end
 
+    # The left-hand part of the postcode with sector, e.g. W1A 1AA -> W1A 1
+    #
+    def outcode_and_sector
+      return nil unless sector
+      [outcode, sector].join(' ')
+    end
+
     # The right-hand part of the postcode, e.g. W1A 1AA -> 1AA
     #
     def incode
@@ -61,6 +68,8 @@ module UKPostcode
     def to_s
       [area, district, " ", sector, unit].compact.join('').strip
     end
+
+    alias_method :full, :to_s
 
     # Returns true if the postcode is a valid full postcode (e.g. W1A 1AA)
     #

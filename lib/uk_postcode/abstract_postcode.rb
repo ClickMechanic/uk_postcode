@@ -17,6 +17,8 @@ module UKPostcode
     def incode;   nil; end
     def outcode;  nil; end
 
+    def specificity; nil; end
+
     def to_s
       raise NotImplemented
     end

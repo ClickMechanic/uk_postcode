@@ -85,6 +85,13 @@ module UKPostcode
       CountryFinder.country(self)
     end
 
+    def specificity
+      return :area unless district
+      return :outcode unless sector
+      return :outcode_and_sector unless unit
+      :full
+    end
+
   private
 
     def letters(str)

@@ -75,4 +75,10 @@ describe UKPostcode::InvalidPostcode do
       expect(subject.country).to eq(:unknown)
     end
   end
+
+  describe "#specificity" do
+    it "is nil" do
+      expect(subject.specificity).to be_nil
+    end
+  end
 end

@@ -100,4 +100,10 @@ describe UKPostcode::GiroPostcode do
       expect(subject.country).to eq(:england)
     end
   end
+
+  describe "#specificity" do
+    it "is full" do
+      expect(subject.specificity).to eq(:full)
+    end
+  end
 end

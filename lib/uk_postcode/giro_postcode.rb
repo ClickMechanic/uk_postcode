@@ -59,5 +59,9 @@ module UKPostcode
     def country
       :england
     end
+
+    def specificity
+      :full
+    end
   end
 end
